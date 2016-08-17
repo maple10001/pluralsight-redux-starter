@@ -24,12 +24,12 @@ export function loadCourses () {
 }
 
 export function saveCourse(course) {
-  return (dispatch, getState) => {
+  return function (dispatch, getState) {
     return courseApi.saveCourse(course).then(savedCourse => {
       course.id ? dispatch(updateCourseSuccess(savedCourse)) :
       dispatch(createCourseSuccess(savedCourse));
     }).catch(error => {
-      throw(error)
+      throw(error);
     });
   };
 }

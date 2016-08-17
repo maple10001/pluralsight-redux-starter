@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import TextInput from './common/TextInput';
 import SelectInput from './common/SelectInput';
 
@@ -15,7 +15,7 @@ const CourseForm = ({
       <h1>Manage Course</h1>
       <TextInput
         name="title"
-        lable="Title"
+        label="Title"
         value={course.title}
         onChange={onChange}
         error={errors.title} />
@@ -31,14 +31,14 @@ const CourseForm = ({
 
         <TextInput
           name="category"
-          lable="Category"
+          label="Category"
           value={course.category}
           onChange={onChange}
           error={errors.category} />
 
           <TextInput
             name="length"
-            lable="Length"
+            label="Length"
             value={course.length}
             onChange={onChange}
             error={errors.length} />
