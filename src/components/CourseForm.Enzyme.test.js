@@ -1,0 +1,35 @@
+import expect from 'expect';
+import React from 'react';
+import {mount, shallow} from 'enzyme';
+import TestUtils from 'react-addons-test-utils';
+import CourseForm from './CourseForm';
+
+function setup(saving) {
+  let props = {
+    course: {},
+    saving: saving,
+    errors: {},
+    onSave: () => {},
+    onChange: () => {}
+  };
+
+  return shallow(<CourseForm {...props} />);
+}
+
+describe('CourseForm testing via Enzyme', () => {
+  it('renders form and h1', () => {
+    const warpper = setup(false);
+    expect(warpper.find('form').length).toBe(1);
+    expect(warpper.find('h1').text()).toEqual('Manage Course');
+  });
+
+  it('save button is labeled "Save" when not saving', () => {
+    const warpper = setup(false);
+    expect(warpper.find('input').props().value).toBe('Save');
+  });
+
+  it('save button is labeled "Saving..." when not saving', () => {
+    const warpper = setup(true);
+    expect(warpper.find('input').props().value).toBe('Saving...');
+  });
+});
